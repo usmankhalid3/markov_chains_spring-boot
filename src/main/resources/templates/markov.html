@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Markov Chains: Output</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form method="POST" enctype="multipart/form-data" action="/">
+		<table>
+			<tr>
+				<td>Order</td>
+				<td>
+					<select name="order" id="order">
+						<option value="1">1</option>
+						<option value="2" selected="true">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Max Words</td>
+				<td><input type="text" name="maxwords" id="maxwords" width="100px" value = "10"/></td>
+			</tr>
+			<tr>
+				<td>Input File</td>
+				<td><input type="file" name="file" /></td>
+			</tr>
+			<tr>
+				<td>Prefix</td>
+				<td><input type="text" name="prefix" id="prefix" width="100px"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Generate Text"/></td>
+			</tr>
+		</table>
+	</form>
+	<h3>
+		<div th:if="${error}">
+   			<p th:text="${error}" style="color:red"/>
+		</div>
+		<p th:text="${output}"/>
+	</h3>
+</body>
+</html>

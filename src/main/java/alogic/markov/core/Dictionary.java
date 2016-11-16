@@ -53,13 +53,21 @@ public class Dictionary {
 		}
 		createOrUpdate(prefix, Suffix.nonWord());
 //		for (Prefix p : chains.keySet()) {
-//			System.out.println(p.toString() + " = " + chains.get(p));
+//			System.out.println(p.toString() + " = " + dumpMultiset(chains.get(p)));
 //		}
 	}
 	
+//	private String dumpMultiset(Multiset<Suffix> chain) {
+//		List<String> result = new ArrayList<String>();
+//		for (Suffix suffix : chain.elementSet()) {
+//			result.add(suffix.getWord() + "[" + chain.count(suffix) + "]");
+//		}
+//		return Joiner.on(",").join(result);
+//	}
+	
 	public Suffix findRandomSuffix(Multiset<Suffix> suffices) {
 		int total = 0;
-		for (Suffix suffix : suffices) {
+		for (Suffix suffix : suffices.elementSet()) {
 			total += suffices.count(suffix);
 		}
 		int random = new Random().nextInt(total);

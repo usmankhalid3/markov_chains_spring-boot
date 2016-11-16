@@ -66,7 +66,7 @@ public class Dictionary {
 		int current = 0;
 		for (Suffix suffix : suffices.elementSet()) {
 			current += suffices.count(suffix);
-			if (random < current) {
+			if (random <= current) {
 				return suffix;
 			}
 		}

@@ -57,18 +57,23 @@ public class Dictionary {
 //		}
 	}
 	
-	private Suffix findRandomSuffix(Multiset<Suffix> suffices) {
+	public Suffix findRandomSuffix(Multiset<Suffix> suffices) {
 		int total = 0;
 		for (Suffix suffix : suffices) {
 			total += suffices.count(suffix);
 		}
-		int current = new Random().nextInt(total);
+		int random = new Random().nextInt(total);
+		int current = 0;
 		for (Suffix suffix : suffices.elementSet()) {
-			current -= suffices.count(suffix);
-			if (current < 0) {
+			current += suffices.count(suffix);
+			if (random < current) {
 				return suffix;
 			}
 		}
 		return null;
+	}
+	
+	public Map<Prefix, Multiset<Suffix>> getChains() {
+		return chains;
 	}
 }

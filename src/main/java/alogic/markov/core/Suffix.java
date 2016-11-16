@@ -55,7 +55,7 @@ public class Suffix {
 		if (word == null) {
 			if (other.word != null)
 				return false;
-		} else if (!word.equals(other.word))
+		} else if (!word.equalsIgnoreCase(other.word))
 			return false;
 		return true;
 	}

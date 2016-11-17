@@ -2,6 +2,7 @@ package alogic.markov.core;
 
 import java.util.Iterator;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.EvictingQueue;
 
 public class Prefix implements Cloneable {
@@ -52,6 +53,14 @@ public class Prefix implements Cloneable {
 			prefix.add(Suffix.nonWord());
 		}
 		return prefix;
+	}
+	
+	public static Prefix fromString(String prefix, String delimiter) {
+		if (Strings.isNullOrEmpty(prefix)) {
+			return null;
+		}
+		String[] prefixes = prefix.split(delimiter);
+		return new Prefix(prefixes);
 	}
 
 	@Override

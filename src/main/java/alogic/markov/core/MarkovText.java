@@ -38,12 +38,16 @@ public class MarkovText {
 		return generateText(maxWords, null);
 	}
 	
-	public String generateText(int maxWords, Prefix prefix) {
+	public String generateText(int maxWords, Prefix basePrefix) {
 		if (maxWords <= 0) {
 			return null;
 		}
-		if (prefix == null) {
+		Prefix prefix;
+		if (basePrefix == null) {
 			prefix = Prefix.createFirst(order);
+		}
+		else {
+			prefix = new Prefix(basePrefix);
 		}
 		List<String> text = Lists.newArrayList();
 		int words = 0;
@@ -58,5 +62,9 @@ public class MarkovText {
 			words++;
 		} while (words < maxWords);
 		return Joiner.on(space).join(text);
+	}
+	
+	public Dictionary getDictionary() {
+		return dictionary;
 	}
 }
